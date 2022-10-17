@@ -1,0 +1,18 @@
+<p>calculator works!</p>
+<form>
+  <input type="number" name="numberFirst" [(ngModel)]="numberFirst">
+  <br> <br>
+  <input type="number" name="numberTwo" [(ngModel)]="numberTwo">
+  <br> <br>
+  <select name="open" #cal>
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <br> <br>
+  <button type="submit" (click)="resultNumber(cal.value)">Submit</button>
+  <p>Result</p>
+  <div>{{result}}</div>
+  
+</form>
