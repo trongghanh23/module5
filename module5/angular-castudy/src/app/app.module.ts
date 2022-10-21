@@ -14,6 +14,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { ContractComponent } from './contract/contract.component';
+import { AddContractComponent } from './contract/add-contract/add-contract.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ContractComponent } from './contract/contract.component';
     CustomerComponent,
     EditCustomerComponent,
     AddCustomerComponent,
-    ContractComponent
+    ContractComponent,
+    AddContractComponent
   ],
   imports: [
     BrowserModule,
