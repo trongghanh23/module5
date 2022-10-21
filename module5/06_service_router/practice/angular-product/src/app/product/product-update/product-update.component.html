@@ -1,0 +1,26 @@
+<p>product-update works!</p>
+<a routerLink="">Quay lại danh sách sản phẩm</a>
+<form [formGroup]="productForm" >
+  <table>
+    <tr>
+      <td>Mã sản phẩm:</td>
+      <td><input type="number" formControlName="id"></td>
+    </tr>
+    <tr>
+      <td>Tên sản phẩm:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Giá sản phẩm</td>
+      <td><input type="number" formControlName="price"></td>
+    </tr>
+    <tr>
+      <td>Mô tả về sản phẩm</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button (click)="updateProduct(productId)">Cập nhật</button></td>
+    </tr>
+  </table>
+</form>
