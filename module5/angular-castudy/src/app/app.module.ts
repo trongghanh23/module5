@@ -7,14 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { EditComponent } from './facility/edit-facility/edit.component';
-import { FacilityComponent } from './facility/facility.component';
-import { CreateFacilityComponent } from './facility/create-facility/create-facility.component';
-import { CustomerComponent } from './customer/customer.component';
-import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
-import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
-import { ContractComponent } from './contract/contract.component';
 import { AddContractComponent } from './contract/add-contract/add-contract.component';
+import { ListCustomerComponent } from './customer/list-customer/list-customer.component';
+import { ListFacilityComponent } from './facility/list-facility/list-facility.component';
+import { ListContractComponent } from './contract/list-contract/list-contract.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +19,10 @@ import { AddContractComponent } from './contract/add-contract/add-contract.compo
     FooterComponent,
     HomeComponent,
     NavbarComponent,
-    EditComponent,
-    FacilityComponent,
-    CreateFacilityComponent,
-    CustomerComponent,
-    EditCustomerComponent,
-    AddCustomerComponent,
-    ContractComponent,
-    AddContractComponent
+    AddContractComponent,
+    ListCustomerComponent,
+    ListFacilityComponent,
+    ListContractComponent,
   ],
   imports: [
     BrowserModule,
