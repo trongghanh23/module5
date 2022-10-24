@@ -34,7 +34,7 @@ export class ContractService {
       deposit: 5000,
       total: 120000
     }, {
-      id: 3,
+      id: 4,
       starDate: '2021-04-19',
       endDate: '2021-04-20',
       employee: 'nguyễn tấn đại',
@@ -42,7 +42,26 @@ export class ContractService {
       facility: 'home',
       deposit: 5000,
       total: 90000
-    }];
+    }, {
+      id: 5,
+      starDate: '2021-04-19',
+      endDate: '2021-04-20',
+      employee: 'nguyễn tấn đại',
+      customer: 'nguyễn thị liễu',
+      facility: 'room',
+      deposit: 5000,
+      total: 100000
+    }, {
+      id: 6,
+      starDate: '2021-04-19',
+      endDate: '2021-04-20',
+      employee: 'nguyễn tấn đại',
+      customer: 'nguyễn thị liễu',
+      facility: 'home',
+      deposit: 4000,
+      total: 110000
+    }
+  ];
 
   constructor() {
   }

@@ -1,1 +1,1 @@
-no
+px-4: padding hai bên left right;

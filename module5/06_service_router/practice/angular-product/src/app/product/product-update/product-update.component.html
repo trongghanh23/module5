@@ -1,5 +1,4 @@
-<p>product-update works!</p>
-<a routerLink="">Quay lại danh sách sản phẩm</a>
+<h1>Tạo sản phẩm mới</h1>
 <form [formGroup]="productForm" >
   <table>
     <tr>
@@ -20,7 +19,7 @@
     </tr>
     <tr>
       <td></td>
-      <td><button (click)="updateProduct(productId)">Cập nhật</button></td>
+      <td><button type="submit" (click)="updateProduct()">Tạo mới</button></td>
     </tr>
   </table>
 </form>

@@ -1,6 +1,7 @@
 export interface Facility {
   id?: number;
   name?: string;
+  image?: string;
   area?: number;
   cost?: number;
   maxPeople?: number;
