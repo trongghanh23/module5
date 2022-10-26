@@ -1,68 +1,33 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../model/customer';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customer: Customer [] = [{
-    id: 1,
-    name: 'Nguyễn thị hào',
-    customerType: 'member',
-    dateOfBirthday: '2020-12-12',
-    gender: 'female',
-    idCard: '09876544567',
-    phoneNumber: '09876545678',
-    email: 'hao@gmail.com.vn',
-    address: 'quảng bình'
-  }, {
-    id: 2,
-    name: 'Nguyễn thị thu',
-    customerType: 'goal',
-    dateOfBirthday: '2019-11-20',
-    gender: 'female',
-    idCard: '09876544567',
-    phoneNumber: '09876545678',
-    email: 'thu@gmail.com.vn',
-    address: 'quảng bình'
-  }, {
-    id: 3,
-    name: 'Nguyễn văn nam',
-    customerType: 'member',
-    dateOfBirthday: '2020-09-29',
-    gender: 'male',
-    idCard: '09876544567',
-    phoneNumber: '09876545678',
-    email: 'nam@gmail.com.vn',
-    address: 'quảng nam'
-  }, {
-    id: 4,
-    name: 'Nguyễn thị thao',
-    customerType: 'member',
-    dateOfBirthday: '2020-12-12',
-    gender: 'female',
-    idCard: '09876544567',
-    phoneNumber: '09876545678',
-    email: 'thao@gmail.com.vn',
-    address: 'quảng ngãi'
-  }, {
-    id: 5,
-    name: 'Nguyễn thị bình',
-    customerType: 'goal',
-    dateOfBirthday: '2020-10-12',
-    gender: 'female',
-    idCard: '09876544567',
-    phoneNumber: '09876545678',
-    email: 'bình@gmail.com.vn',
-    address: 'nghệ an'
-  }
-  ];
+  private API_URL = 'http://localhost:3000/customer';
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
   }
 
 
-  getAll() {
-    return this.customer;
+  getAll(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(this.API_URL);
+  }
+
+  saveCreateProduct(customer: Customer): Observable<void> {
+    return this.httpClient.post<void>(this.API_URL, customer);
+  }
+  editCustomer(customer: Customer): Observable<void> {
+    return this.httpClient.patch<void>(this.API_URL + '/' + customer.id, customer);
+  }
+
+  findById(id: number): Observable<Customer> {
+    return this.httpClient.get<Customer>(this.API_URL + '/' + id);
+  }
+  deleteCustomer(id: number): Observable<Customer> {
+    return this.httpClient.delete<Customer>(this.API_URL + '/' + id);
   }
 }

@@ -36,6 +36,21 @@
 </div>
 <div class="container-fluid px-5">
 <h2 style="text-align: center; margin-top: 10px">Facility</h2>
+  <form action="/customer" style="width: 40%;margin-left: 60%">
+    <div class="input-group mb-3">
+      <input
+        type="text-dark"
+        class="form-control"
+        aria-describedby="button-addon2"
+        name="keyword" placeholder="Name facility"
+      />
+      <button class="  btn btn-primary text-dark" type="submit" id="button-addon2"
+              data-mdb-ripple-color="dark">
+        Search
+      </button>
+    </div>
+
+  </form>
 
 <div class="row">
   <div class="col-sm-4 mb-4" *ngFor="let item of facility">
@@ -47,21 +62,21 @@
         <h5 class="card-title">{{item.name | uppercase}}</h5>
         <div class="row mb-2">
           <div class="col-sm-6">
-            <span class="card-text">Loại dịch vụ: {{item.facilityType | uppercase}}</span><br>
+            <span class="card-text">Loại dịch vụ: {{item.facilityType.name | uppercase}}</span><br>
             <span class="card-text">Diện tích: {{item.area}} m<sup>2</sup></span><br>
             <span class="card-text">Chí phí thuê: {{item.cost | currency: "VND"}}</span>
           </div>
           <div class="col-sm-6">
             <span class="card-text">Số người tối đa: {{item.maxPeople}}</span><br>
-            <span class="card-text">Kiểu thuê: {{item.rentType}}</span>
+            <span class="card-text">Kiểu thuê: {{item.rentType.name}}</span>
           </div>
         </div>
         <a routerLink="edit/{{item.id}}" class="me-2">
           <button class=" btn btn-success" >Edit</button>
         </a>
         <button class="btn btn-danger btn-outline-secondary text-light"
-                data-bs-toggle="modal" data-bs-target="#deleteFacility">Delete
-<!--                (click)="getInfoFacilityDelete(item.facilityImage, item.name, item.id)">Xóa-->
+                data-bs-toggle="modal"data-bs-target="#deleteCustomer"
+                (click)="getInfoFacilityDelete(item.name,item.id)">Delete
         </button>
       </div>
     </div>
@@ -83,21 +98,22 @@
     </li>
   </ul>
 </nav>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form>
-      <div class="modal-content">
+    <form action="/facility/delete" method="post">
+      <div class="modal-content" style="background-color: darksalmon">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Notification </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body container-fluid">
-          You want to delete Facility: <span id="delete_modal"></span>
+          You want to delete Customer: <span id="delete_modal">{{facilityNameDelete}}</span>
           <input type="hidden" id="sendId" name="id">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+          <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"(click)="deleteFacility()">Delete</button>
 
         </div>
       </div>
