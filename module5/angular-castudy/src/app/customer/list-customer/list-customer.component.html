@@ -19,10 +19,7 @@
             aria-describedby="button-addon2"
             name="keyword" placeholder="Name Customer"
           />
-          <button class="btn btn-primary text-dark" type="submit" id="button-addon2"
-                  data-mdb-ripple-color="dark" >
-            Search
-          </button>
+
         </div>
 
       </form>
@@ -48,8 +45,8 @@
         <th colspan="4">Action</th>
 
       </tr>
-      <tr *ngFor="let customers of customer; index as i" style="margin-top: 20px">
-        <td>{{i + 1}}</td>
+      <tr *ngFor="let customers of customerListPaging; index as i" style="margin-top: 20px">
+        <td class="text-center">{{i + 1 + (curPage - 1) * numberRecord}}</td>
         <td>{{customers.name}}</td>
         <td>{{customers.dateOfBirthday}}</td>
         <td>{{customers.gender}}</td>
@@ -73,23 +70,28 @@
 
     </table>
   </div>
+  <nav aria-label="..." class="justify-content-center d-flex">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" (click)="previos()" *ngIf="curPage > 1">&laquo; Trang trước</a>
+      </li>
+      <li class="page-item disabled" *ngIf="curPage <= 1">
+        <a class="page-link">&laquo;</a>
+      </li>
+
+      <li class="page-item"><a class="page-link disabled" href="" [text]="curPage + ' / ' + totalPage"></a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" (click)="next()" *ngIf="curPage < totalPage">Trang sau &raquo;</a>
+      </li>
+      <li class="page-item disabled" *ngIf="curPage >= totalPage">
+        <a class="page-link">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
 </div>
-<div>  <nav  aria-label="..." style="margin-left: 20px">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</div>
+
 
 <div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -112,4 +114,3 @@
     </form>
   </div>
 </div>
-

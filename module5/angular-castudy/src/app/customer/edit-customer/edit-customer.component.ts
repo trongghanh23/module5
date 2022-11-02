@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerType} from '../../model/customer-type';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {Customer} from '../../model/customer';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-customer',
@@ -56,7 +57,13 @@ export class EditCustomerComponent implements OnInit {
     const customer = this.customerFormGroup.value;
     customer.id = this.customer.id;
     this.customerService.editCustomer(customer).subscribe(value => {
-      alert('Tạo thành công');
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'You are successful',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.router.navigateByUrl('/list/customer');
     }, e => {
       console.log(e);

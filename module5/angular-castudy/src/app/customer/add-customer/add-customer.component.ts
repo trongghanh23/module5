@@ -4,6 +4,7 @@ import {CustomerType} from '../../model/customer-type';
 import {CustomerService} from '../../service/customer.service';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-customer',
@@ -41,12 +42,17 @@ export class AddCustomerComponent implements OnInit {
   createCustomer(): void {
     const customer = this.customerFormGroup.value;
     this.customerService.saveCreateProduct(customer).subscribe(value => {
-      alert('Tạo thành công');
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'You are successful',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.router.navigateByUrl('/list/customer');
     }, e => {
       console.log(e);
     });
   }
-
 
 }

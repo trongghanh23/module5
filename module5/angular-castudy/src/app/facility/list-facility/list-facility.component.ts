@@ -3,6 +3,7 @@ import {Facility} from '../../model/facility';
 import {FacilityService} from '../../service/facility.service';
 import {Customer} from '../../model/customer';
 import {CustomerService} from '../../service/customer.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-list-facility',
@@ -35,6 +36,13 @@ export class ListFacilityComponent implements OnInit {
   }
   deleteFacility(): void {
     this.facilityService.deleteFacility(this.facilityIdDelete).subscribe(() => {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'You are successful',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ngOnInit();
     }, error => {
       console.log(error);

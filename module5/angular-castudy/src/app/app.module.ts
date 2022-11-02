@@ -17,7 +17,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {EditCustomerComponent} from './customer/edit-customer/edit-customer.component';
 import {CreateFacilityComponent} from './facility/create-facility/create-facility.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +38,7 @@ import {CreateFacilityComponent} from './facility/create-facility/create-facilit
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

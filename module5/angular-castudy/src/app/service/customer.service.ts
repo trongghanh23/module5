@@ -12,6 +12,9 @@ export class CustomerService {
   constructor(private httpClient: HttpClient) {
   }
 
+  findCustomerSearchPaging(numberRecord: number, curPage: number): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(this.API_URL + '?_page=' + curPage + '&_limit=' + numberRecord);
+  }
 
   getAll(): Observable<Customer[]> {
     return this.httpClient.get<Customer[]>(this.API_URL);
@@ -20,6 +23,7 @@ export class CustomerService {
   saveCreateProduct(customer: Customer): Observable<void> {
     return this.httpClient.post<void>(this.API_URL, customer);
   }
+
   editCustomer(customer: Customer): Observable<void> {
     return this.httpClient.patch<void>(this.API_URL + '/' + customer.id, customer);
   }
@@ -27,6 +31,7 @@ export class CustomerService {
   findById(id: number): Observable<Customer> {
     return this.httpClient.get<Customer>(this.API_URL + '/' + id);
   }
+
   deleteCustomer(id: number): Observable<Customer> {
     return this.httpClient.delete<Customer>(this.API_URL + '/' + id);
   }
